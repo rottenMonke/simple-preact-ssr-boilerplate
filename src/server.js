@@ -3,7 +3,7 @@ import ssr from "./ssr";
 import path from "path";
 import compression from "compression";
 import assetManifest from '../dist/manifest.json';
-const { readFileSync } = require('fs');
+import { readFileSync } from 'fs';
 
 const port = 5555;
 const app = express();
