@@ -17,3 +17,4 @@ There are several commands
     - Typescript maybe?
     - Lighter routing module
     - SSR codespliting  (doubt I can manage it without hacks now)
+    - Add storeon
