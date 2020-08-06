@@ -1,6 +1,6 @@
 # simple-preact-ssr-boilerplate
 
-So i didn't manage to find any simple preact ssr boilerplates.Most of could be found looked
+So i didn't manage to find any simple preact ssr boilerplates.Most of what could be found looked
 overcomplicated.
 
 # How to
