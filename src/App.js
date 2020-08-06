@@ -8,7 +8,7 @@ import './App.css'
 export default class App extends Component {
   render({ url }) {
     return (
-      <div class="kek">
+      <div>
         <Navigation />
         <Router url={url}>
           <Main path="/" />

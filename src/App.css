@@ -1,3 +1,6 @@
-.kek {
-    color: crimson;
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: content-box;
+    font-family: -apple-system,system-ui,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol;
 }

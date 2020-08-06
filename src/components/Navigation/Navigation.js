@@ -1,11 +1,11 @@
 import { h } from "preact";
+import './Navigation.css'
 
 export default function Navigation() {
   return (
-    <div>
-      <a href="/">main</a>
-      <br/>
-      <a href="/list">list</a>
-    </div>
+    <nav class="Navigation">
+      <a class="Navigation__link" href="/">main</a>
+      <a class="Navigation__link" href="/list">list</a>
+    </nav>
   );
 }
