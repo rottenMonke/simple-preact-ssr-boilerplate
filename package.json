@@ -10,7 +10,12 @@
     "prod": "npm run build:client && npm run build:server && node ./dist/server.js",
     "analyze": "cross-env ENABLE_ANALYZER=true npm run build:client"
   },
-  "keywords": ["preact","ssr","boilerplate","simple"],
+  "keywords": [
+    "preact",
+    "ssr",
+    "boilerplate",
+    "simple"
+  ],
   "author": "azakaWow",
   "license": "ISC",
   "dependencies": {
