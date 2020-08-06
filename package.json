@@ -8,7 +8,7 @@
     "build:client": "webpack --config=config/webpack.prod.js",
     "build:server": "webpack --config=config/webpack.server.js",
     "prod": "npm run build:client && npm run build:server && node ./dist/server.js",
-    "analyze": "cross-env ENABLE_ANALYZER=true npm run build"
+    "analyze": "cross-env ENABLE_ANALYZER=true npm run build:client"
   },
   "keywords": [],
   "author": "",
