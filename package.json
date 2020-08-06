@@ -1,7 +1,7 @@
 {
-  "name": "tests",
+  "name": "simple-preact-ssr-boilerplate",
   "version": "1.0.0",
-  "description": "",
+  "description": "simple-preact-ssr-boilerplate",
   "main": "index.js",
   "scripts": {
     "dev": "webpack-dev-server  --config=config/webpack.dev.js --hot",
@@ -10,8 +10,8 @@
     "prod": "npm run build:client && npm run build:server && node ./dist/server.js",
     "analyze": "cross-env ENABLE_ANALYZER=true npm run build:client"
   },
-  "keywords": [],
-  "author": "",
+  "keywords": ["preact","ssr","boilerplate","simple"],
+  "author": "azakaWow",
   "license": "ISC",
   "dependencies": {
     "express": "^4.17.1",
