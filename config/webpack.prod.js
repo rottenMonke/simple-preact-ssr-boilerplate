@@ -7,6 +7,7 @@ const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPl
 const TerserPlugin = require('terser-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const enableBundleAnalyzer = process.env.ENABLE_ANALYZER === 'true';
+const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
 
 module.exports = merge(common, {
     mode: 'production',
@@ -23,7 +24,7 @@ module.exports = merge(common, {
         },
         runtimeChunk: false,
         minimize: true,
-        minimizer: [new TerserPlugin()],
+        minimizer: [new TerserPlugin(), new CssMinimizerPlugin()],
     },
     module: {
         rules: [
