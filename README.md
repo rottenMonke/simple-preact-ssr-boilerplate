@@ -9,7 +9,7 @@ There are several commands
 
  - dev - hotreload devserver without ssr
  - build:client/build:server - builts resources
- - prod - build everything and runs it with SSR in production mod
+ - prod - builds everything and runs it with SSR in production mod
  - analyze - analyze client side bundle
 
 # Todo
