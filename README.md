@@ -11,6 +11,5 @@ overcomplicated.
 
 # Todo
     - Typescript maybe?
-    - Lighter routing module
-    - SSR codespliting  (doubt I can manage it without hacks now). At least I can deactivate SSR for some routes.
-    - Add storeon
+    - SSR codespliting  
+      (doubt I can manage it without hacks now). At least I can deactivate SSR for some routes.
