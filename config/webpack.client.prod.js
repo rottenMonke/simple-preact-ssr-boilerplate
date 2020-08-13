@@ -1,5 +1,3 @@
-const { merge } = require('webpack-merge');
-const common = require('./webpack.common.js');
 const path = require('path');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const ManifestPlugin = require('webpack-manifest-plugin');
@@ -9,9 +7,11 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const enableBundleAnalyzer = process.env.ENABLE_ANALYZER === 'true';
 const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
 
-module.exports = merge(common, {
+module.exports = {
     mode: 'production',
-    devtool: false,
+    entry: {
+        main: path.resolve(__dirname, "../src", "index.js"),
+    },
     output: {
         filename: 'bundle.[hash].js',
         chunkFilename: 'chunk[id].[hash].js',
@@ -28,7 +28,11 @@ module.exports = merge(common, {
     },
     module: {
         rules: [
-
+            {
+                test: /\.(js|jsx)$/,
+                exclude: [/node_modules/],
+                use: [{ loader: "babel-loader" }]
+            },
             {
                 test: /\.css$/i,
                 use: [MiniCssExtractPlugin.loader, 'css-loader'],
@@ -45,4 +49,4 @@ module.exports = merge(common, {
             openAnalyzer: true,
         }),
     ],
-});
+};

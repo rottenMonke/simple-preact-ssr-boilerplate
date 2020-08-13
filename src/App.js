@@ -1,20 +1,20 @@
-import { Component, h } from "preact";
+import { Component, h, Fragment } from "preact";
 import { Router } from "preact-router";
 import Navigation from "./components/Navigation/Navigation";
-import List from "./pages/List";
-import Main from "./pages/Main";
-import './App.css'
+import { routes } from "./routingConfig";
+import "./App.css";
 
 export default class App extends Component {
-  render({ url }) {
+  render({ url, pageData }) {
     return (
-      <div>
+      <Fragment>
         <Navigation />
         <Router url={url}>
-          <Main path="/" />
-          <List path="/list" />
+          {routes.map(({ Component, path }) => (
+            <Component path={path} pageData={pageData} />
+          ))}
         </Router>
-      </div>
+      </Fragment>
     );
   }
 }

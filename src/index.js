@@ -1,6 +1,4 @@
-import { h, Component, render, hydrate } from 'preact'
+import { h, Component, hydrate } from 'preact'
 import App from './App'
 
-const renderer = process.env.MODE === 'production' ? hydrate : render;
-
-renderer(<App />, document.getElementById('root'))
+hydrate(<App />, document.getElementById('root'));
