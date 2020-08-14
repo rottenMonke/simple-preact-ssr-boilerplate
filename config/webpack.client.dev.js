@@ -7,7 +7,7 @@ module.exports = {
     entry: {
         main: path.resolve(__dirname, "../src", "index.js"),
     },
-    // For some reason client code doesn't get attached/doesn't work width development mode on
+    // For some reason client code doesn't get attached/doesn't work with development mode on
     mode: 'production',
     devtool: 'eval-source-map',
     watch: true,
