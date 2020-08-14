@@ -5,7 +5,7 @@ overcomplicated.
 
 # Start
 
-  - For development start "build:client-dev" and then "start:ssr-server-dev" in separate terminal
+  - For development start "build:client-dev" and then "start:ssr-server-dev" in a separate terminal
   - prod - run "prod" command
 
 
