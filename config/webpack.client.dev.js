@@ -1,5 +1,4 @@
 const path = require('path');
-const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const ManifestPlugin = require('webpack-manifest-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
@@ -26,8 +25,8 @@ module.exports = {
         
     },
     output: {
-        filename: 'bundle.[hash].js',
-        chunkFilename: 'chunk[id].[hash].js',
+        filename: 'bundle.js',
+        chunkFilename: 'chunk[id].js',
         path: path.resolve(__dirname, '../dist'),
         publicPath: "/"
     },
@@ -40,7 +39,6 @@ module.exports = {
     },
     plugins: [
         new MiniCssExtractPlugin(),
-        new CleanWebpackPlugin(),
         new ManifestPlugin()
     ],
     resolve: {
