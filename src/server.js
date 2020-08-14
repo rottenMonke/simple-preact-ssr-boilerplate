@@ -17,7 +17,7 @@ const css = readFileSync(cssPath, 'utf8');
 app.use(compression());
 app.use(express.static(distPath));
 
-// Dummy api endpoing for showing isomorphic fetch
+// Dummy api endpoint, just to show an example of a basic isomorphic fetch
 app.get("/api/getCharacters", (req,res) => res.send([
   {
     id: 1,
