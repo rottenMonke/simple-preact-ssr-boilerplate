@@ -34,7 +34,7 @@ module.exports = {
     ],
   },
   plugins: [
-    new NodemonPlugin(),
+    new NodemonPlugin({ ext: 'js'}),
     new webpack.DefinePlugin({ "NODE_ENV": JSON.stringify("development") }),
   ],
   resolve: {
