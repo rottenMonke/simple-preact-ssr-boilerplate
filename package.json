@@ -11,7 +11,7 @@
     "build:server-dev": "webpack --config=config/webpack.server.dev.js",
     "start:ssr-server-prod": "node ./dist/server.js",
     "start:ssr-server-dev": "webpack --config ./config/webpack.server.dev.js",
-    "analyze": "cross-env ENABLE_ANALYZER=true npm run build:client"
+    "analyze": "cross-env ENABLE_ANALYZER=true npm run build:client-prod"
   },
   "keywords": [
     "preact",
