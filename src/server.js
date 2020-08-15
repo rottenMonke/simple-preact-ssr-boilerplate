@@ -3,16 +3,16 @@ import ssr from "./ssr";
 import path from "path";
 import compression from "compression";
 import assetManifest from "../dist/manifest.json";
-import { readFileSync } from "fs";
 import { fetchInitialData } from "./routingConfig";
+import { getCSS } from './lib/ssrUtils'
 
 const port = 5555;
 const app = express();
 
 const root = process.cwd();
 const distPath = path.resolve(root, "dist")
-const cssPath = distPath + assetManifest['main.css'];
-const css = readFileSync(cssPath, 'utf8');
+const css = getCSS(assetManifest)
+
 
 app.use(compression());
 app.use(express.static(distPath));
@@ -43,7 +43,7 @@ app.get("*", async (req, res) => {
       <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-        <style>${css}</style>
+        <style>${css()}</style>
         <link rel="shortcut icon" href="https://preactjs.com/favicon.ico">
         <title>Preact ssr boilerplate</title>
       </head>

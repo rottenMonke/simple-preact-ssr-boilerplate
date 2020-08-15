@@ -1,4 +1,5 @@
 const path = require("path");
+const webpack = require('webpack');
 const nodeExternals = require("webpack-node-externals");
 const NodemonPlugin = require('nodemon-webpack-plugin');
 
@@ -32,7 +33,10 @@ module.exports = {
     },
     ],
   },
-  plugins: [new NodemonPlugin()],
+  plugins: [
+    new NodemonPlugin(),
+    new webpack.DefinePlugin({ "NODE_ENV": JSON.stringify("development") }),
+  ],
   resolve: {
     extensions: [".js", ".jsx"],
   },
