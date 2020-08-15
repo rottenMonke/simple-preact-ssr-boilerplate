@@ -50,7 +50,7 @@ app.get("*", async (req, res) => {
       <body>
         <div id="root">${renderedApp}</div>
       </body>
-      <script>${pageData ? `window.PAGE_DATA = ${JSON.stringify(pageData)}`: ''}</script>
+      ${pageData ? `<script>window.PAGE_DATA = ${JSON.stringify(pageData)}</script>`: ''}
       <script async type="text/javascript" src="${assetManifest['main.js']}" ></script>
     </html>
     `;
