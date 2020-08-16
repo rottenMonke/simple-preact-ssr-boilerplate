@@ -38,8 +38,8 @@ module.exports = {
         minimize: false,
     },
     plugins: [
-        new MiniCssExtractPlugin(),
-        new ManifestPlugin()
+        new ManifestPlugin({ isInitial: true, isModuleAsset: true, writeToFileEmit: true }),
+        new MiniCssExtractPlugin()
     ],
     resolve: {
         extensions: ['.js', '.jsx', '.css']
