@@ -1,10 +1,12 @@
-import { h } from "preact";
+import { h, FunctionalComponent } from "preact";
 import Body from "../components/Body/Body";
 
-export default function Main() {
+const Main: FunctionalComponent = () => {
   return (
     <Body>
       <h1>Preact ssr boilerplate</h1>
     </Body>
   );
 }
+
+export default Main;

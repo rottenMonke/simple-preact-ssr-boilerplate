@@ -1,6 +1,7 @@
 const path = require("path");
 const webpack = require('webpack');
 const nodeExternals = require("webpack-node-externals");
+const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 
 module.exports = {
   mode: 'production',
@@ -17,14 +18,10 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.(js|jsx)$/,
+        test: /\.(ts|tsx)$/,
         exclude: [/node_modules/],
-        use: [
-          {
-            loader: "babel-loader",
-          },
-        ],
-      },
+        use: [{ loader: "ts-loader" }]
+    },
       {
         test: /\.css$/,
         use: ['ignore-loader'],
@@ -32,9 +29,10 @@ module.exports = {
     ],
   },
   plugins: [
+    new CleanWebpackPlugin(),
     new webpack.DefinePlugin({ "NODE_ENV": JSON.stringify("production") }),
   ],
   resolve: {
-    extensions: [".js", ".jsx"],
-  },
+    extensions: ['.ts', '.tsx']
+},
 };

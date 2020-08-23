@@ -29,9 +29,9 @@ module.exports = {
     module: {
         rules: [
             {
-                test: /\.(js|jsx)$/,
+                test: /\.(ts|tsx)$/,
                 exclude: [/node_modules/],
-                use: [{ loader: "babel-loader" }]
+                use: [{ loader: "ts-loader" }]
             },
             {
                 test: /\.css$/i,
@@ -49,4 +49,7 @@ module.exports = {
             openAnalyzer: true,
         }),
     ],
+    resolve: {
+        extensions: ['.ts', '.tsx','.css']
+    },
 };
