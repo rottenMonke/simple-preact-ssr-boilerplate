@@ -8,7 +8,7 @@ module.exports = {
   target: "node",
   externals: [nodeExternals()],
   entry: {
-    main: path.resolve(__dirname, "../src", "server.js"),
+    main: path.resolve(__dirname, "../src", "server.ts"),
   },
   output: {
     filename: "server.js",

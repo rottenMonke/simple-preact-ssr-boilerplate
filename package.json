@@ -2,7 +2,7 @@
   "name": "simple-preact-ssr-boilerplate",
   "version": "1.0.0",
   "description": "simple-preact-ssr-boilerplate",
-  "main": "index.js",
+  "main": "index.tsx",
   "scripts": {
     "prod": "npm-run-all build:client-prod build:server-prod start:ssr-server-prod",
     "build:client-prod": "webpack --config=config/webpack.client.prod.js",
