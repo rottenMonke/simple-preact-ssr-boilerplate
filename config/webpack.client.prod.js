@@ -1,3 +1,4 @@
+const webpack = require('webpack');
 const path = require('path');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const ManifestPlugin = require('webpack-manifest-plugin');
@@ -48,6 +49,7 @@ module.exports = {
             analyzerMode: enableBundleAnalyzer === true ? 'static' : 'disabled',
             openAnalyzer: true,
         }),
+        new webpack.DefinePlugin({ "NODE_ENV": JSON.stringify("production") }),
     ],
     resolve: {
         extensions: ['.ts', '.tsx','.css']
