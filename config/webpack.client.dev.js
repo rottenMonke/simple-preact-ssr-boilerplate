@@ -39,14 +39,9 @@ module.exports = {
         minimize: false,
     },
     plugins: [
-<<<<<<< HEAD
-        new ManifestPlugin({ isInitial: true, isModuleAsset: true, writeToFileEmit: true }),
-        new MiniCssExtractPlugin()
-=======
         new MiniCssExtractPlugin(),
         new ManifestPlugin(),
         new webpack.DefinePlugin({ "NODE_ENV": JSON.stringify("development") }),
->>>>>>> typescript
     ],
     resolve: {
         extensions: ['.ts', '.tsx','.css']

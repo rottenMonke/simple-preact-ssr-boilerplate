@@ -10,6 +10,5 @@ overcomplicated.
 
 
 # Todo
-    - Typescript maybe?
     - SSR codespliting  
       (doubt I can manage it without hacks now). At least I can deactivate SSR for some routes.
