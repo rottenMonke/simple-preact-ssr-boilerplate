@@ -9,7 +9,7 @@ module.exports = {
   watch: true,
   externals: [nodeExternals({modulesFromFile: true})],
   entry: {
-    main: path.resolve(__dirname, "../src", "server.js"),
+    main: path.resolve(__dirname, "../src", "server.ts"),
   },
   output: {
     filename: "server.js",
@@ -19,14 +19,10 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.(js|jsx)$/,
+        test: /\.(ts|tsx)$/,
         exclude: [/node_modules/],
-        use: [
-          {
-            loader: "babel-loader",
-          },
-        ],
-      },
+        use: [{ loader: "ts-loader" }]
+    },
       {
         test: /\.css$/,
         use: ['ignore-loader'],
@@ -37,7 +33,7 @@ module.exports = {
     new NodemonPlugin({ ext: 'js'}),
     new webpack.DefinePlugin({ "NODE_ENV": JSON.stringify("development") }),
   ],
-  resolve: {
-    extensions: [".js", ".jsx"],
-  },
+    resolve: {
+      extensions: ['.ts', '.tsx']
+    },
 };

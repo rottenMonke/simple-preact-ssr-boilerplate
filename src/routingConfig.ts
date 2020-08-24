@@ -1,8 +1,17 @@
 import Main from "./pages/Main";
 import List from "./pages/List";
 import { fetchCharacters } from './api'
+import { ComponentType } from "preact";
 
-export const routes = [
+
+
+export interface IRoute {
+    path: string
+    Component: ComponentType<any>
+    initPageData?: () => Promise<any>
+}
+
+export const routes: IRoute[] = [
     {
         path: "/",
         Component: Main

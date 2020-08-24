@@ -1,5 +1,6 @@
 import path from "path";
 import { readFileSync } from "fs";
+import { NODE_ENV } from '../../types/global'
 
 export const getCSS = (assetManifest) => {
     const root = process.cwd();

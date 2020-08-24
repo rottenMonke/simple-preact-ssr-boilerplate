@@ -1,10 +1,11 @@
+const webpack = require('webpack');
 const path = require('path');
 const ManifestPlugin = require('webpack-manifest-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 module.exports = {
     entry: {
-        main: path.resolve(__dirname, "../src", "index.js"),
+        main: path.resolve(__dirname, "../src", "index.tsx"),
     },
     // For some reason client code doesn't get attached/doesn't work with development mode on
     mode: 'production',
@@ -13,9 +14,9 @@ module.exports = {
     module: {
         rules: [
             {
-                test: /\.(js|jsx)$/,
+                test: /\.(ts|tsx)$/,
                 exclude: [/node_modules/],
-                use: [{ loader: "babel-loader" }]
+                use: [{ loader: "ts-loader" }]
             },
             {
                 test: /\.css$/i,
@@ -38,10 +39,16 @@ module.exports = {
         minimize: false,
     },
     plugins: [
+<<<<<<< HEAD
         new ManifestPlugin({ isInitial: true, isModuleAsset: true, writeToFileEmit: true }),
         new MiniCssExtractPlugin()
+=======
+        new MiniCssExtractPlugin(),
+        new ManifestPlugin(),
+        new webpack.DefinePlugin({ "NODE_ENV": JSON.stringify("development") }),
+>>>>>>> typescript
     ],
     resolve: {
-        extensions: ['.js', '.jsx', '.css']
+        extensions: ['.ts', '.tsx','.css']
     },
 };

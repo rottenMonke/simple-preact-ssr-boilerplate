@@ -2,7 +2,9 @@ import express from "express";
 import ssr from "./ssr";
 import path from "path";
 import compression from "compression";
+//@ts-ignore
 import assetManifest from "../dist/manifest.json";
+
 import { fetchInitialData } from "./routingConfig";
 import { getCSS } from './lib/ssrUtils'
 

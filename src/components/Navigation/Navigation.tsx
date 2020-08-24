@@ -1,7 +1,7 @@
-import { h } from "preact";
+import { h, FunctionComponent } from "preact";
 import './Navigation.css'
 
-export default function Navigation() {
+const Navigation:FunctionComponent = () => {
   return (
     <nav class="Navigation">
       <a class="Navigation__link" href="/">main</a>
@@ -9,3 +9,5 @@ export default function Navigation() {
     </nav>
   );
 }
+
+export default Navigation;
