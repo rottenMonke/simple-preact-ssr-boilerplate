@@ -42,7 +42,10 @@ module.exports = {
         
     },
     plugins: [
-        new MiniCssExtractPlugin(),
+        new MiniCssExtractPlugin({
+            filename: '[name][hash].css',
+            chunkFilename: '[id][hash].css',
+        }),
         new CleanWebpackPlugin(),
         new ManifestPlugin(),
         new BundleAnalyzerPlugin({
