@@ -6,14 +6,15 @@ import compression from "compression";
 import assetManifest from "../dist/manifest.json";
 import { discoverProjectStyles, getUsedStyles, getCriticalStyles } from 'used-styles';
 import { fetchInitialData } from "./routingConfig";
+import { NODE_ENV } from "./types/global";
 
 const port = 5555;
 const app = express();
-
+const isDevelopment = NODE_ENV  === 'development';
 const root = process.cwd();
 const distPath = path.resolve(root, "dist")
 // generate lookup table on server start
-const stylesLookup = discoverProjectStyles(distPath);
+let stylesLookup = discoverProjectStyles(distPath);
 
 
 app.use(compression());
@@ -39,6 +40,11 @@ app.get("/api/getCharacters", (req,res) => res.send([
 app.get("*", async (req, res) => {
   const pageData = await fetchInitialData(req.url);
   const renderedApp = ssr({ url: req.url, pageData });
+  //TODO Make it prettier
+  if(isDevelopment) {
+    stylesLookup = discoverProjectStyles(distPath);
+  }
+
   await stylesLookup;
   const criticalCSS = getCriticalStyles(renderedApp, stylesLookup);
   const usedStyles = getUsedStyles(renderedApp, stylesLookup);
