@@ -49,7 +49,7 @@ app.get("*", async (req, res) => {
   const criticalCSS = getCriticalStyles(renderedApp, stylesLookup);
   const usedStyles = getUsedStyles(renderedApp, stylesLookup);
   const preloadStyles = usedStyles.map(style => {
-    return`<link rel="stylesheet" href="${style}">\n`;
+    return`<link rel="preload" href="${style}" as="style" onload="this.onload=null;this.rel='stylesheet'">\n`;
     // append this link to the header output or to the body
   }).join('');
   
