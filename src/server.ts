@@ -49,7 +49,7 @@ app.get("*", async (req, res) => {
   const criticalCSS = getCriticalStyles(renderedApp, stylesLookup);
   const usedStyles = getUsedStyles(renderedApp, stylesLookup);
   const preloadStyles = usedStyles.map(style => {
-    return`<link rel="preload" href="${style}" as="style" onload="this.onload=null;this.rel='stylesheet'">\n`;
+    return`<link rel="stylesheet" href="${style}">\n`;
     // append this link to the header output or to the body
   }).join('');
   
@@ -60,6 +60,7 @@ app.get("*", async (req, res) => {
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         ${criticalCSS}
+        ${preloadStyles}
         <link rel="shortcut icon" href="https://preactjs.com/favicon.ico">
         <title>Preact ssr boilerplate</title>
         </head>
@@ -68,7 +69,6 @@ app.get("*", async (req, res) => {
         </body>
         ${pageData ? `<script>window.PAGE_DATA = ${JSON.stringify(pageData)}</script>`: ''}
         <script async type="text/javascript" src="${assetManifest['main.js']}" ></script>
-        ${preloadStyles}
     </html>
     `;
   res.send(html);
