@@ -15,15 +15,10 @@ module.exports = {
     },
     output: {
         filename: 'bundle.[hash].js',
-        chunkFilename: 'chunk[id].[hash].js',
         path: path.resolve(__dirname, '../dist'),
         publicPath: "/"
     },
     optimization: {
-        splitChunks: {
-            chunks: 'all',
-        },
-        runtimeChunk: false,
         minimize: true,
         minimizer: [new TerserPlugin(), new CssMinimizerPlugin()],
     },

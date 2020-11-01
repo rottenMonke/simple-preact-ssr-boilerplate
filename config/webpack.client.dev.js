@@ -7,8 +7,7 @@ module.exports = {
     entry: {
         main: path.resolve(__dirname, "../src", "index.tsx"),
     },
-    // For some reason client code doesn't get attached/doesn't work with development mode on
-    mode: 'production',
+    mode: 'development',
     devtool: 'eval-source-map',
     watch: true,
     module: {
@@ -27,16 +26,8 @@ module.exports = {
     },
     output: {
         filename: 'bundle.js',
-        chunkFilename: 'chunk[id].js',
         path: path.resolve(__dirname, '../dist'),
         publicPath: "/"
-    },
-    optimization: {
-        splitChunks: {
-            chunks: 'all',
-        },
-        runtimeChunk: false,
-        minimize: false,
     },
     plugins: [
         new MiniCssExtractPlugin(),
