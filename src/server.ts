@@ -1,27 +1,22 @@
 import express from "express";
 import ssr from "./ssr";
-import path from "path";
 import compression from "compression";
 //@ts-ignore
 import assetManifest from "../dist/manifest.json";
-import { discoverProjectStyles, getUsedStyles, getCriticalStyles } from 'used-styles';
+import { discoverProjectStyles } from 'used-styles';
 import { fetchInitialData } from "./routingConfig";
-import { NODE_ENV } from "./types/global";
-
-const port = 5555;
-const app = express();
-const isDevelopment = NODE_ENV  === 'development';
-const root = process.cwd();
-const distPath = path.resolve(root, "dist")
+import makeCSS from "./lib/makeCSS";
+import{ PORT, isDevelopment, distPath } from '../src/lib/ssrConstants'
 // generate lookup table on server start
 let stylesLookup = discoverProjectStyles(distPath);
 
 
+const app = express();
 app.use(compression());
 app.use(express.static(distPath));
 
 // Dummy api endpoint, just to show an example of a basic isomorphic fetch
-app.get("/api/getCharacters", (req,res) => res.send([
+app.get("/api/getCharacters", (_req,res) => res.send([
   {
     id: 1,
     name: 'Jolyne',
@@ -36,21 +31,15 @@ app.get("/api/getCharacters", (req,res) => res.send([
   }
 ]));
 
+// Development middleware for updating style map on each new request
+if(isDevelopment) {
+  app.get("*", (_req,_res,next) => discoverProjectStyles(distPath).then(() => next()))
+}
 
 app.get("*", async (req, res) => {
   const pageData = await fetchInitialData(req.url);
   const renderedApp = ssr({ url: req.url, pageData });
-  //TODO Make it prettier
-  if(isDevelopment) {
-    stylesLookup = discoverProjectStyles(distPath);
-  }
-
-  await stylesLookup;
-  const criticalCSS = getCriticalStyles(renderedApp, stylesLookup);
-  const usedStyles = getUsedStyles(renderedApp, stylesLookup);
-  const preloadStyles = usedStyles.map(style => {
-    return`<link rel="preload" href="${style}" as="style" onload="this.onload=null;this.rel='stylesheet'"/>\n`;
-  }).join('');
+  const { criticalCSS, preloadStyles } = makeCSS(renderedApp,stylesLookup);
   
   const html = `
     <!DOCTYPE html>
@@ -74,9 +63,9 @@ app.get("*", async (req, res) => {
   res.end();
 });
 
-app.listen(port, (error) => {
+app.listen(PORT, (error) => {
   if (error) {
     throw error;
   }
-  console.log(`SSR Running on port ${port}`);
+  console.log(`SSR Running on port ${PORT}`);
 });
