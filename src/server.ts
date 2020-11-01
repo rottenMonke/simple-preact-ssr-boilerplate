@@ -33,7 +33,11 @@ app.get("/api/getCharacters", (_req,res) => res.send([
 
 // Development middleware for updating style map on each new request
 if(isDevelopment) {
-  app.get("*", (_req,_res,next) => discoverProjectStyles(distPath).then(() => next()))
+  app.get("*", async (_req,_res,next) => { 
+    stylesLookup = discoverProjectStyles(distPath);
+    await stylesLookup;
+    next();
+  })
 }
 
 app.get("*", async (req, res) => {
